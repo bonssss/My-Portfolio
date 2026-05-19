@@ -22,7 +22,7 @@ import {
 export const SOCIAL_LINKS = [
   { name: "GitHub", href: "https://github.com/bonssss", icon: Github },
   { name: "LinkedIn", href: "https://linkedin.com/in/bonsa-desalegn", icon: Linkedin },
-  { name: "Telegram", href: "https://t.me/bonssss", icon: Send },
+  { name: "Telegram", href: "https://t.me/bons2122", icon: Send },
   { name: "Email", href: "mailto:bons6710hos@gmail.com", icon: Mail },
 ];
 
