@@ -18,9 +18,9 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
           <div className="space-y-12">
             <div className="space-y-4">
               <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Transmission</span>
@@ -46,12 +46,12 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  className="p-6 border border-border hover:border-primary/50 hover:bg-muted transition-all text-foreground hover:text-primary group"
+                  className="p-4 sm:p-6 border border-border hover:border-primary/50 hover:bg-muted transition-all text-foreground hover:text-primary group"
                 >
                   <social.icon className="h-6 w-6 group-hover:scale-125 transition-transform" />
                 </a>
@@ -65,7 +65,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="relative"
           >
-            <form onSubmit={handleSubmit} className="space-y-12 p-6 md:p-12 border border-border bg-card/50 brutalist-shadow">
+            <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12 p-5 sm:p-8 md:p-12 border border-border bg-card/50 brutalist-shadow">
               <div className="space-y-8">
                 <div className="space-y-2 relative">
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Identification</label>

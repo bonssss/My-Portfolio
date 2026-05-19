@@ -3,7 +3,7 @@ import { EXPERIENCE } from "@/constants/data";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-32">
+    <section id="experience" className="py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-24 flex flex-col md:flex-row items-center justify-between gap-12">
           <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase">Trajectory</h2>
@@ -18,7 +18,7 @@ export function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="relative pl-12 pb-24 group last:pb-0"
+              className="relative pl-6 sm:pl-12 pb-12 md:pb-24 group last:pb-0"
             >
               {/* Dot */}
               <div className="absolute left-[-5px] top-0 w-[10px] h-[10px] bg-foreground group-hover:bg-primary group-hover:scale-150 transition-all duration-500 rounded-none rotate-45" />

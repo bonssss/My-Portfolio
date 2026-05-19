@@ -28,14 +28,14 @@ function App() {
           <motion.div 
             key="loader"
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center flex-col gap-4 font-mono"
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center flex-col gap-4 font-mono px-6"
           >
             <motion.div 
               initial={{ width: 0 }}
-              animate={{ width: "200px" }}
+              animate={{ width: "150px" }}
               className="h-px bg-primary"
             />
-            <span className="text-[10px] uppercase tracking-[0.5em] text-primary animate-pulse">
+            <span className="text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.5em] text-primary animate-pulse text-center max-w-xs sm:max-w-none">
               Initializing System Architect Portfolio
             </span>
           </motion.div>

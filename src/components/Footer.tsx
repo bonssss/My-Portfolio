@@ -11,7 +11,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-16 mb-20">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 mb-20">
           <div className="space-y-6 max-w-xs">
             <span className="text-4xl font-black tracking-tighter text-foreground">BD<span className="text-primary">.</span></span>
             <p className="text-sm text-muted-foreground font-mono uppercase tracking-tighter leading-relaxed">
@@ -19,7 +19,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-16">
             <div className="space-y-4">
               <span className="text-[10px] uppercase tracking-widest text-muted-foreground/60 font-mono">Navigation</span>
               <div className="flex flex-col gap-2">

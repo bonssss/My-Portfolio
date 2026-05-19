@@ -80,15 +80,15 @@ export function Blog() {
   }, [selectedPost]);
 
   return (
-    <section id="blog" className="py-32 border-t border-border">
+    <section id="blog" className="py-20 md:py-32 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12 mb-24">
           <div className="lg:col-span-6">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Insights</span>
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mt-4">Technical <br /> Articles.</h2>
           </div>
-          <div className="lg:col-span-6 flex items-end justify-end">
-            <p className="text-muted-foreground font-mono text-sm max-w-sm text-right">
+          <div className="lg:col-span-6 flex items-end justify-start lg:justify-end">
+            <p className="text-muted-foreground font-mono text-sm max-w-sm text-left lg:text-right">
               Sharing thoughts on automated testing pipelines, software reliability, and high-performance backend design.
             </p>
           </div>
@@ -135,7 +135,7 @@ export function Blog() {
       {/* Modal Detail Overlay */}
       <AnimatePresence>
         {selectedPost && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -154,15 +154,15 @@ export function Blog() {
               className="relative w-full max-w-3xl max-h-[85vh] bg-card border border-border flex flex-col brutalist-shadow overflow-hidden"
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border bg-muted/20">
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-muted-foreground">
+              <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border bg-muted/20">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-mono text-muted-foreground pr-4">
                   <span className="text-primary uppercase tracking-wider">{selectedPost.category}</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {selectedPost.date}</span>
                   <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {selectedPost.readTime}</span>
                 </div>
                 <button
                   onClick={() => setSelectedPost(null)}
-                  className="p-2 border border-border hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
+                  className="p-2 border border-border hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer shrink-0"
                   aria-label="Close details"
                 >
                   <X className="h-4 w-4" />
@@ -170,8 +170,8 @@ export function Blog() {
               </div>
 
               {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-6">
-                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-foreground">
+              <div className="flex-1 overflow-y-auto p-5 sm:p-10 space-y-6">
+                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-foreground leading-tight">
                   {selectedPost.title}
                 </h3>
                 

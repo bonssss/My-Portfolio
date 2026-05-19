@@ -4,15 +4,15 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Services() {
   return (
-    <section id="services" className="py-32 grid-bg">
+    <section id="services" className="py-20 md:py-32 grid-bg">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12 mb-24">
           <div className="lg:col-span-6">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Offerings</span>
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mt-4">System <br /> Integrity.</h2>
           </div>
-          <div className="lg:col-span-6 flex items-end justify-end">
-             <p className="text-muted-foreground font-mono text-sm max-w-sm text-right">
+          <div className="lg:col-span-6 flex items-end justify-start lg:justify-end">
+             <p className="text-muted-foreground font-mono text-sm max-w-sm text-left lg:text-right">
               Providing specialized services at the intersection of backend stability and automated validation.
             </p>
           </div>
@@ -25,7 +25,7 @@ export function Services() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="group p-16 bg-background hover:bg-primary transition-all duration-700 flex flex-col h-full relative overflow-hidden"
+              className="group p-6 sm:p-10 lg:p-16 bg-background hover:bg-primary transition-all duration-700 flex flex-col h-full relative overflow-hidden"
             >
               {/* Background Number */}
               <span className="absolute -bottom-10 -right-10 text-[200px] font-black text-foreground/5 group-hover:text-black/10 transition-colors pointer-events-none">
