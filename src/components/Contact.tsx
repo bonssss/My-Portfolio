@@ -24,12 +24,12 @@ export function Contact() {
           <div className="space-y-12">
             <div className="space-y-4">
               <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Transmission</span>
-              <h2 className="text-8xl font-black tracking-tighter uppercase leading-none">
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-none">
                 Get In <br /> <span className="text-mask hover:text-foreground transition-all duration-500">Touch.</span>
               </h2>
             </div>
             
-            <p className="text-2xl text-muted-foreground font-mono leading-relaxed max-w-md">
+            <p className="text-xl md:text-2xl text-muted-foreground font-mono leading-relaxed max-w-md">
               Ready to scale your backend or automate your quality cycle? Let's connect.
             </p>
 
@@ -65,7 +65,7 @@ export function Contact() {
             viewport={{ once: true }}
             className="relative"
           >
-            <form onSubmit={handleSubmit} className="space-y-12 p-12 border border-border bg-card/50 brutalist-shadow">
+            <form onSubmit={handleSubmit} className="space-y-12 p-6 md:p-12 border border-border bg-card/50 brutalist-shadow">
               <div className="space-y-8">
                 <div className="space-y-2 relative">
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Identification</label>

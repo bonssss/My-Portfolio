@@ -9,7 +9,7 @@ export function Services() {
         <div className="grid lg:grid-cols-12 gap-12 mb-24">
           <div className="lg:col-span-6">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Offerings</span>
-            <h2 className="text-7xl font-black tracking-tighter uppercase mt-4">System <br /> Integrity.</h2>
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mt-4">System <br /> Integrity.</h2>
           </div>
           <div className="lg:col-span-6 flex items-end justify-end">
              <p className="text-muted-foreground font-mono text-sm max-w-sm text-right">
@@ -36,7 +36,7 @@ export function Services() {
                 <div className="p-4 bg-muted w-fit rounded-none border border-border group-hover:bg-black/20 group-hover:border-black/20 transition-all">
                   <service.icon className="h-8 w-8 text-primary group-hover:text-black" />
                 </div>
-                <h3 className="text-4xl font-black tracking-tighter uppercase group-hover:text-black transition-colors">
+                <h3 className="text-2xl md:text-4xl font-black tracking-tighter uppercase group-hover:text-black transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-muted-foreground font-mono text-sm max-w-sm group-hover:text-black/80 transition-colors">
