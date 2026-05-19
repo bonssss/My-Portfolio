@@ -82,19 +82,19 @@ export function Navbar() {
       </nav>
 
       {/* Top Right Controls */}
-      <div className="fixed top-8 right-8 z-50 flex items-center gap-4">
+      <div className="fixed top-6 right-6 md:top-8 md:right-8 z-50 flex items-center gap-2 bg-card/85 backdrop-blur-xl border border-border p-1.5 rounded-full shadow-xl">
         {mounted && (
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-3 rounded-full border border-border bg-card text-foreground hover:bg-muted transition-all shadow-lg cursor-pointer"
+            className="p-2.5 rounded-full text-foreground hover:bg-muted transition-all cursor-pointer"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
-              <Sun className="h-5 w-5" />
+              <Sun className="h-4 w-4" />
             ) : (
-              <Moon className="h-5 w-5" />
+              <Moon className="h-4 w-4" />
             )}
           </motion.button>
         )}
@@ -103,10 +103,10 @@ export function Navbar() {
           href="#contact"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="group flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-sm tracking-tighter"
+          className="group flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full font-bold text-xs tracking-tighter uppercase"
         >
           LET'S TALK
-          <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
         </motion.a>
       </div>
     </>
