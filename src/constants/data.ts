@@ -20,10 +20,10 @@ import {
 } from "lucide-react";
 
 export const SOCIAL_LINKS = [
-  { name: "GitHub", href: "https://github.com", icon: Github },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-  { name: "Telegram", href: "https://t.me", icon: Send },
-  { name: "Email", href: "mailto:bonsa@example.com", icon: Mail },
+  { name: "GitHub", href: "https://github.com/bonssss", icon: Github },
+  { name: "LinkedIn", href: "https://linkedin.com/in/bonsa-desalegn", icon: Linkedin },
+  { name: "Telegram", href: "https://t.me/bonssss", icon: Send },
+  { name: "Email", href: "mailto:bons6710hos@gmail.com", icon: Mail },
 ];
 
 export const NAV_LINKS = [
