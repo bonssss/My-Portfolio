@@ -85,7 +85,7 @@ export function Blog() {
         <div className="grid lg:grid-cols-12 gap-12 mb-24">
           <div className="lg:col-span-6">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Insights</span>
-            <h2 className="text-7xl font-black tracking-tighter uppercase mt-4">Technical <br /> Articles.</h2>
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mt-4">Technical <br /> Articles.</h2>
           </div>
           <div className="lg:col-span-6 flex items-end justify-end">
             <p className="text-muted-foreground font-mono text-sm max-w-sm text-right">
@@ -171,7 +171,7 @@ export function Blog() {
 
               {/* Scrollable Content */}
               <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-6">
-                <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-foreground">
+                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-foreground">
                   {selectedPost.title}
                 </h3>
                 

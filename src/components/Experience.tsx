@@ -6,7 +6,7 @@ export function Experience() {
     <section id="experience" className="py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-24 flex flex-col md:flex-row items-center justify-between gap-12">
-          <h2 className="text-7xl font-black tracking-tighter uppercase">Trajectory</h2>
+          <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase">Trajectory</h2>
           <div className="w-full md:w-1/2 h-px bg-border hidden md:block" />
         </div>
 
@@ -30,7 +30,7 @@ export function Experience() {
                 </div>
                 
                 <div className="md:col-span-3 space-y-6">
-                  <h3 className="text-4xl font-black tracking-tighter uppercase group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl md:text-4xl font-black tracking-tighter uppercase group-hover:text-primary transition-colors">
                     {exp.title}
                   </h3>
                   <p className="text-xl text-muted-foreground font-mono leading-relaxed max-w-2xl">

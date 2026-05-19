@@ -7,7 +7,7 @@ export function About() {
         <div className="grid lg:grid-cols-12 gap-12">
           {/* Large Vertical Text */}
           <div className="lg:col-span-1 hidden lg:flex items-center justify-center">
-            <span className="[writing-mode:vertical-lr] rotate-180 text-8xl font-black text-foreground/5 select-none uppercase tracking-tighter">
+            <span className="[writing-mode:vertical-lr] rotate-180 text-6xl md:text-8xl font-black text-foreground/5 select-none uppercase tracking-tighter">
               IDENTITY
             </span>
           </div>
@@ -20,7 +20,7 @@ export function About() {
                 viewport={{ once: true }}
                 className="space-y-8"
               >
-                <h2 className="text-5xl font-black tracking-tighter uppercase leading-none">
+                <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase leading-none">
                   Crafting <span className="text-primary italic underline underline-offset-8">Robust</span> <br /> 
                   Digital Foundations.
                 </h2>
@@ -54,7 +54,7 @@ export function About() {
               ].map((stat, i) => (
                 <div key={i} className="p-12 border-b md:border-b-0 md:border-r border-border hover:bg-muted transition-colors group">
                   <div className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase mb-8">{stat.label}</div>
-                  <div className="text-6xl font-black text-foreground mb-4 group-hover:text-primary transition-colors">{stat.value}</div>
+                  <div className="text-4xl md:text-6xl font-black text-foreground mb-4 group-hover:text-primary transition-colors">{stat.value}</div>
                   <div className="text-sm text-muted-foreground font-mono">{stat.desc}</div>
                 </div>
               ))}

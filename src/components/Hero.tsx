@@ -76,9 +76,9 @@ export function Hero() {
             <div className="space-y-4">
               <span className="block text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Specialization</span>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 bg-white/5 border border-white/10 text-[10px] uppercase tracking-tighter">Microservices</span>
-                <span className="px-2 py-1 bg-white/5 border border-white/10 text-[10px] uppercase tracking-tighter">SDET</span>
-                <span className="px-2 py-1 bg-white/5 border border-white/10 text-[10px] uppercase tracking-tighter">Cloud Infrastructure</span>
+                <span className="px-2 py-1 bg-muted border border-border text-[10px] uppercase tracking-tighter">Microservices</span>
+                <span className="px-2 py-1 bg-muted border border-border text-[10px] uppercase tracking-tighter">SDET</span>
+                <span className="px-2 py-1 bg-muted border border-border text-[10px] uppercase tracking-tighter">Cloud Infrastructure</span>
               </div>
             </div>
           </motion.div>

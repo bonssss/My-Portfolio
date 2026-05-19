@@ -6,10 +6,10 @@ export function Skills() {
     <section id="skills" className="py-32 relative overflow-hidden bg-muted/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-24 space-y-4">
-          <h2 className="text-8xl font-black tracking-tighter uppercase opacity-10 absolute -top-10 left-0">TOOLS</h2>
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase opacity-10 absolute -top-10 left-0">TOOLS</h2>
           <div className="relative z-10">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">The Arsenal</span>
-            <h3 className="text-5xl font-black tracking-tighter uppercase mt-2">Core Tech Stack</h3>
+            <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mt-2">Core Tech Stack</h3>
           </div>
         </div>
 
@@ -21,7 +21,7 @@ export function Skills() {
                 <div className="p-4 bg-muted rounded-none border border-border group-hover:border-primary/50 transition-colors">
                   <cat.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h4 className="text-4xl font-black tracking-tighter uppercase group-hover:translate-x-4 transition-transform duration-500">
+                <h4 className="text-2xl md:text-4xl font-black tracking-tighter uppercase group-hover:translate-x-4 transition-transform duration-500">
                   {cat.category}
                 </h4>
               </div>
@@ -48,7 +48,7 @@ export function Skills() {
           <motion.div 
             animate={{ x: [0, -1000] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="flex gap-20 text-8xl font-black text-foreground/5 select-none uppercase italic"
+            className="flex gap-20 text-6xl md:text-8xl font-black text-foreground/5 select-none uppercase italic"
           >
             {[...Array(10)].map((_, i) => (
               <span key={i}>Bonsa Desalegn — QA Engineer — Backend Developer — </span>
