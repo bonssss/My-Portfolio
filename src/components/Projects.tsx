@@ -42,7 +42,7 @@ function ProjectCard({ project, index }: { project: any, index: number }) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="group relative aspect-square bg-background overflow-hidden flex flex-col p-12 hover:bg-muted/10 transition-colors"
+      className="group relative aspect-auto md:aspect-square bg-background overflow-hidden flex flex-col p-8 md:p-12 hover:bg-muted/10 transition-colors min-h-[380px] md:min-h-0"
     >
       {/* Background Image on Hover */}
       <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none">
