@@ -115,26 +115,27 @@ export const EXPERIENCE = [
     description: "Designing and executing automated and manual test suites for fintech mobile (iOS/Android) and web applications, ensuring flawless transaction processing and security compliance.",
     icon: ShieldCheck,
   },
-  {
-    title: "Quality Assurance Engineer",
-    company: "Binary Cosmo LLC",
-    period: "June 2024 - Feb 2025",
-    description: "Managed end-to-end QA verification processes, designed regressions test cases, and integrated automated test scripts into delivery pipelines.",
-    icon: Terminal,
-  },
+
   {
     title: "Backend Developer",
     company: "Ambalay Maps",
-    period: "2023 - 2024",
+    period: "2025 - Present",
     description: "Implemented complex geographic routing, duration/distance estimations, tile rendering, and navigation modules using Node.js, PostgreSQL, PostGIS, and GeoServer.",
     icon: Globe,
   },
   {
     title: "Backend Engineer",
     company: "DAAS (Delivery as a Service)",
-    period: "2022 - 2023",
+    period: "2025 - 2026",
     description: "Built a secure, scalable delivery dispatcher with robust order, driver, and API key management. Optimized job queues and object storage with Redis, BullMQ, MinIO, and Postgres.",
     icon: Server,
+  },
+    {
+    title: "Quality Assurance Engineer",
+    company: "Binary Cosmo LLC",
+    period: "June 2024 - Feb 2025",
+    description: "Managed end-to-end QA verification processes, designed regressions test cases, and integrated automated test scripts into delivery pipelines.",
+    icon: Terminal,
   },
   {
     title: "Backend Developer",
