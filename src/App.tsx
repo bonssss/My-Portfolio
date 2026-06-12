@@ -9,8 +9,25 @@ import { Services } from "./components/Services";
 import { Blog } from "./components/Blog";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { BlogPostDetail } from "./components/BlogPostDetail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+
+function Home() {
+  return (
+    <main className="noise-bg">
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Services />
+      <Blog />
+      <Contact />
+    </main>
+  );
+}
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,7 +39,8 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary font-sans antialiased overflow-x-hidden">
+    <BrowserRouter>
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary font-sans antialiased overflow-x-hidden">
       <AnimatePresence>
         {loading ? (
           <motion.div 
@@ -44,16 +62,10 @@ function App() {
 
       <Navbar />
       
-      <main className="noise-bg">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Services />
-        <Blog />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog/:slug" element={<BlogPostDetail />} />
+      </Routes>
 
       <Footer />
       <Toaster 
@@ -73,7 +85,8 @@ function App() {
           }
         }}
       />
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { 
   Github, 
@@ -23,6 +24,8 @@ export function Navbar() {
   const { scrollYProgress } = useScroll();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     setMounted(true);
@@ -58,8 +61,12 @@ export function Navbar() {
             return (
               <a
                 key={link.name}
-                href={link.href}
-                onClick={() => setActive(link.href)}
+                href={isHome ? link.href : `/${link.href}`}
+                onClick={(e) => {
+                  if (isHome) {
+                    setActive(link.href);
+                  }
+                }}
                 className={`relative p-2 sm:p-3 rounded-full transition-all group ${
                   active === link.href ? "text-primary" : "text-foreground/50 hover:text-foreground"
                 }`}
@@ -100,7 +107,7 @@ export function Navbar() {
         )}
 
         <motion.a
-          href="#contact"
+          href={isHome ? "#contact" : "/#contact"}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="group hidden sm:flex items-center gap-1.5 bg-primary text-primary-foreground px-4 py-2.5 rounded-full font-bold text-xs tracking-tighter uppercase"

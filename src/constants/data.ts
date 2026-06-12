@@ -140,7 +140,7 @@ export const EXPERIENCE = [
   {
     title: "Backend Developer",
     company: "Everlink Digital Technologies",
-    period: "2021 - 2022",
+    period: "2023 - 2024",
     description: "Engineered a medicine tracking and pharmacy inventory management system, implementing search/location indices for user-facing pharmacy routing.",
     icon: Database,
   },
