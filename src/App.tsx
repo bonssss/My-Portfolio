@@ -9,8 +9,25 @@ import { Services } from "./components/Services";
 import { Blog } from "./components/Blog";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { BlogPostDetail } from "./components/BlogPostDetail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+
+function Home() {
+  return (
+    <main className="noise-bg">
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Services />
+      <Blog />
+      <Contact />
+    </main>
+  );
+}
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,20 +39,21 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary font-sans antialiased overflow-x-hidden">
+    <BrowserRouter>
+      <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 selection:text-primary font-sans antialiased overflow-x-hidden">
       <AnimatePresence>
         {loading ? (
           <motion.div 
             key="loader"
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[100] bg-black flex items-center justify-center flex-col gap-4 font-mono"
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center flex-col gap-4 font-mono px-6"
           >
             <motion.div 
               initial={{ width: 0 }}
-              animate={{ width: "200px" }}
+              animate={{ width: "150px" }}
               className="h-px bg-primary"
             />
-            <span className="text-[10px] uppercase tracking-[0.5em] text-primary animate-pulse">
+            <span className="text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.5em] text-primary animate-pulse text-center max-w-xs sm:max-w-none">
               Initializing System Architect Portfolio
             </span>
           </motion.div>
@@ -44,16 +62,10 @@ function App() {
 
       <Navbar />
       
-      <main className="noise-bg">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Services />
-        <Blog />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog/:slug" element={<BlogPostDetail />} />
+      </Routes>
 
       <Footer />
       <Toaster 
@@ -73,7 +85,8 @@ function App() {
           }
         }}
       />
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

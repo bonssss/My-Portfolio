@@ -41,7 +41,7 @@ export function Hero() {
               Architecting Quality
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-black leading-[0.85] tracking-tighter mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.85] tracking-tighter mb-8">
               BACKEND <span className="text-primary italic">&</span> <br /> 
               <span className="text-mask hover:text-foreground transition-all duration-500">QUALITY ASSURANCE ENGINEER</span>
             </h1>

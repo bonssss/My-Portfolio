@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Calendar, Clock, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Calendar, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
-interface BlogPost {
+export interface BlogPost {
   id: number;
   title: string;
   excerpt: string;
@@ -14,7 +14,7 @@ interface BlogPost {
   slug: string;
 }
 
-const BLOG_POSTS: BlogPost[] = [
+export const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
     title: "How We Built a Geofence Engine with Sub-100ms Latency",
@@ -66,29 +66,16 @@ const BLOG_POSTS: BlogPost[] = [
 ];
 
 export function Blog() {
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
-
-  useEffect(() => {
-    if (selectedPost) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [selectedPost]);
-
   return (
-    <section id="blog" className="py-32 border-t border-border">
+    <section id="blog" className="py-20 md:py-32 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12 mb-24">
           <div className="lg:col-span-6">
             <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Insights</span>
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter uppercase mt-4">Technical <br /> Articles.</h2>
           </div>
-          <div className="lg:col-span-6 flex items-end justify-end">
-            <p className="text-muted-foreground font-mono text-sm max-w-sm text-right">
+          <div className="lg:col-span-6 flex items-end justify-start lg:justify-end">
+            <p className="text-muted-foreground font-mono text-sm max-w-sm text-left lg:text-right">
               Sharing thoughts on automated testing pipelines, software reliability, and high-performance backend design.
             </p>
           </div>
@@ -120,77 +107,18 @@ export function Blog() {
                 </p>
               </div>
 
-              <div 
-                onClick={() => setSelectedPost(post)}
+              <Link 
+                to={`/blog/${post.slug}`}
                 className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-foreground font-bold border border-border group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all px-6 py-3 w-fit shrink-0 cursor-pointer"
               >
                 Read Post
                 <ArrowUpRight className="h-4 w-4" />
-              </div>
+              </Link>
             </motion.article>
           ))}
         </div>
       </div>
 
-      {/* Modal Detail Overlay */}
-      <AnimatePresence>
-        {selectedPost && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedPost(null)}
-              className="absolute inset-0 bg-background/80 backdrop-blur-md"
-            />
-
-            {/* Modal Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-3xl max-h-[85vh] bg-card border border-border flex flex-col brutalist-shadow overflow-hidden"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border bg-muted/20">
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-muted-foreground">
-                  <span className="text-primary uppercase tracking-wider">{selectedPost.category}</span>
-                  <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {selectedPost.date}</span>
-                  <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {selectedPost.readTime}</span>
-                </div>
-                <button
-                  onClick={() => setSelectedPost(null)}
-                  className="p-2 border border-border hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
-                  aria-label="Close details"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-
-              {/* Scrollable Content */}
-              <div className="flex-1 overflow-y-auto p-6 md:p-10 space-y-6">
-                <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-foreground">
-                  {selectedPost.title}
-                </h3>
-                
-                <div className="h-px bg-border" />
-                
-                <div className="space-y-6 font-mono text-sm leading-relaxed text-muted-foreground">
-                  {selectedPost.content.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
-                  ))}
-                </div>
-
-                <div className="pt-6 text-xs font-mono text-muted-foreground">
-                  Written by: <span className="text-foreground font-bold">{selectedPost.author}</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

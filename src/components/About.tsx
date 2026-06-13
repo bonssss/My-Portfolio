@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section id="about" className="py-32 relative overflow-hidden border-y border-border">
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden border-y border-border">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-12 gap-12">
           {/* Large Vertical Text */}
@@ -52,7 +52,7 @@ export function About() {
                 { label: "Coverage", value: "100%", desc: "Commitment to automated testing" },
                 { label: "Response", value: "<50ms", desc: "API latency optimization goal" }
               ].map((stat, i) => (
-                <div key={i} className="p-12 border-b md:border-b-0 md:border-r border-border hover:bg-muted transition-colors group">
+                <div key={i} className="p-6 sm:p-8 md:p-12 border-b last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 border-border hover:bg-muted transition-colors group">
                   <div className="text-[10px] font-mono tracking-widest text-muted-foreground uppercase mb-8">{stat.label}</div>
                   <div className="text-4xl md:text-6xl font-black text-foreground mb-4 group-hover:text-primary transition-colors">{stat.value}</div>
                   <div className="text-sm text-muted-foreground font-mono">{stat.desc}</div>

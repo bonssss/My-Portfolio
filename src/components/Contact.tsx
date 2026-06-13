@@ -7,20 +7,48 @@ import { SOCIAL_LINKS } from "@/constants/data";
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setTimeout(() => {
+        setIsSubmitting(false);
+        toast.error("SETUP REQUIRED: Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file to enable email delivery.");
+      }, 1000);
+      return;
+    }
+
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      formData.append("access_key", accessKey);
+      formData.append("subject", "New Message from Portfolio Contact Form");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("SUCCESS: Message received and dispatched to inbox.");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        toast.error(data.message || "TRANSMISSION FAILED: Please try again later.");
+      }
+    } catch (error) {
+      toast.error("ERROR: Connection interrupted. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      toast.success("INITIATED: Message received and queued for processing.");
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
+    }
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
           <div className="space-y-12">
             <div className="space-y-4">
               <span className="text-primary font-mono text-[10px] tracking-[0.4em] uppercase">Transmission</span>
@@ -46,12 +74,12 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.name}
                   href={social.href}
-                  className="p-6 border border-border hover:border-primary/50 hover:bg-muted transition-all text-foreground hover:text-primary group"
+                  className="p-4 sm:p-6 border border-border hover:border-primary/50 hover:bg-muted transition-all text-foreground hover:text-primary group"
                 >
                   <social.icon className="h-6 w-6 group-hover:scale-125 transition-transform" />
                 </a>
@@ -65,12 +93,13 @@ export function Contact() {
             viewport={{ once: true }}
             className="relative"
           >
-            <form onSubmit={handleSubmit} className="space-y-12 p-6 md:p-12 border border-border bg-card/50 brutalist-shadow">
+            <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12 p-5 sm:p-8 md:p-12 border border-border bg-card/50 brutalist-shadow">
               <div className="space-y-8">
                 <div className="space-y-2 relative">
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Identification</label>
                   <input 
                     type="text" 
+                    name="name"
                     required 
                     placeholder="FULL NAME"
                     className="w-full bg-transparent border-b border-border py-4 focus:border-primary outline-none transition-colors font-mono text-lg placeholder:text-muted-foreground/30"
@@ -80,6 +109,7 @@ export function Contact() {
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Response Address</label>
                   <input 
                     type="email" 
+                    name="email"
                     required 
                     placeholder="EMAIL@PROVIDER.COM"
                     className="w-full bg-transparent border-b border-border py-4 focus:border-primary outline-none transition-colors font-mono text-lg placeholder:text-muted-foreground/30"
@@ -88,6 +118,7 @@ export function Contact() {
                 <div className="space-y-2 relative">
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground font-mono">Payload</label>
                   <textarea 
+                    name="message"
                     required 
                     rows={4} 
                     placeholder="BRIEF YOUR PROJECT"

@@ -3,7 +3,7 @@ import { SKILLS } from "@/constants/data";
 
 export function Skills() {
   return (
-    <section id="skills" className="py-32 relative overflow-hidden bg-muted/10">
+    <section id="skills" className="py-20 md:py-32 relative overflow-hidden bg-muted/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-24 space-y-4">
           <h2 className="text-6xl md:text-8xl font-black tracking-tighter uppercase opacity-10 absolute -top-10 left-0">TOOLS</h2>
@@ -15,7 +15,7 @@ export function Skills() {
 
         <div className="space-y-1">
           {SKILLS.map((cat, i) => (
-            <div key={cat.category} className="group py-12 border-b border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-8 hover:bg-primary/5 px-4 transition-colors">
+            <div key={cat.category} className="group py-8 md:py-12 border-b border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-8 hover:bg-primary/5 px-4 transition-colors">
               <div className="flex items-center gap-6">
                 <span className="text-sm font-mono text-muted-foreground">0{i + 1}</span>
                 <div className="p-4 bg-muted rounded-none border border-border group-hover:border-primary/50 transition-colors">
@@ -26,7 +26,7 @@ export function Skills() {
                 </h4>
               </div>
 
-              <div className="flex flex-wrap gap-x-8 gap-y-4 max-w-2xl justify-end">
+              <div className="flex flex-wrap gap-x-8 gap-y-4 max-w-2xl justify-start md:justify-end">
                 {cat.items.map((skill) => (
                   <motion.span
                     key={skill}
