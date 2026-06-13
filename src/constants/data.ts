@@ -82,8 +82,8 @@ export const PROJECTS = [
     tech: ["Node.js", "PostgreSQL", "PostGIS", "GeoServer"],
     image: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/2bf73bea-628d-4dc3-aed7-97d8bf08837b/geofence-engine-ec306ff9-1779184587186.webp",
     category: "Backend",
-    github: "#",
-    demo: "#",
+    github: "https://github.com/bonssss",
+    demo: "https://www.ambalaymaps.com/",
   },
   {
     id: 4,
@@ -102,8 +102,8 @@ export const PROJECTS = [
     tech: ["Selenium", "Playwright", "Postman", "CI/CD"],
     image: "https://storage.googleapis.com/dala-prod-public-storage/generated-images/2bf73bea-628d-4dc3-aed7-97d8bf08837b/order-tracking-d42910c6-1779184587190.webp",
     category: "QA",
-    github: "#",
-    demo: "#",
+    github: "https://github.com/bonssss/playwright-python-automation-boilerplate",
+    demo: "https://github.com/bonssss/playwright-python-automation-boilerplate",
   },
 ];
 
