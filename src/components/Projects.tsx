@@ -1,11 +1,21 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { PROJECTS } from "@/constants/data";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "../lib/supabase";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 
 export function Projects() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
+  const { data: PROJECTS, isLoading } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('projects').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    }
+  });
+
   return (
     <section id="projects" className="py-20 md:py-32 relative overflow-hidden bg-background">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,7 +34,9 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
-          {PROJECTS.map((project, idx) => (
+          {isLoading ? (
+            <div className="p-12 text-center text-muted-foreground col-span-2">Loading projects...</div>
+          ) : PROJECTS?.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}
         </div>

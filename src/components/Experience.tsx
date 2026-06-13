@@ -1,7 +1,18 @@
 import { motion } from "framer-motion";
-import { EXPERIENCE } from "@/constants/data";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "../lib/supabase";
+import * as Icons from "lucide-react";
 
 export function Experience() {
+  const { data: EXPERIENCE, isLoading } = useQuery({
+    queryKey: ['experience'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('experience').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    }
+  });
+
   return (
     <section id="experience" className="py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
@@ -11,7 +22,11 @@ export function Experience() {
         </div>
 
         <div className="space-y-0 border-l border-border">
-          {EXPERIENCE.map((exp, idx) => (
+          {isLoading ? (
+            <div className="pl-6 sm:pl-12 text-muted-foreground">Loading experience...</div>
+          ) : EXPERIENCE?.map((exp, idx) => {
+            const Icon = (Icons as any)[exp.icon] || Icons.Briefcase;
+            return (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -20 }}
@@ -38,13 +53,13 @@ export function Experience() {
                   </p>
                   
                   <div className="flex items-center gap-4 text-muted-foreground/30">
-                    <exp.icon className="h-12 w-12" />
+                    <Icon className="h-12 w-12" />
                     <div className="h-px w-24 bg-border" />
                   </div>
                 </div>
               </div>
             </motion.div>
-          ))}
+          )})}
         </div>
       </div>
     </section>

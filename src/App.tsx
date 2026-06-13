@@ -10,9 +10,20 @@ import { Blog } from "./components/Blog";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { BlogPostDetail } from "./components/BlogPostDetail";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { AuthProvider } from "./contexts/AuthContext";
+import { AdminLayout } from "./components/admin/AdminLayout";
+import { Login } from "./pages/admin/Login";
+import { Dashboard } from "./pages/admin/Dashboard";
+import { ManageProjects } from "./pages/admin/ManageProjects";
+import { ManageExperience } from "./pages/admin/ManageExperience";
+import { ManageSkills } from "./pages/admin/ManageSkills";
+import { ManageServices } from "./pages/admin/ManageServices";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function Home() {
   return (
@@ -26,6 +37,16 @@ function Home() {
       <Blog />
       <Contact />
     </main>
+  );
+}
+
+function PublicLayout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 
@@ -60,14 +81,26 @@ function App() {
         ) : null}
       </AnimatePresence>
 
-      <Navbar />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog/:slug" element={<BlogPostDetail />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <Routes>
+            <Route element={<PublicLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog/:slug" element={<BlogPostDetail />} />
+          </Route>
+          
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="projects" element={<ManageProjects />} />
+            <Route path="experience" element={<ManageExperience />} />
+            <Route path="skills" element={<ManageSkills />} />
+            <Route path="services" element={<ManageServices />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
+      </QueryClientProvider>
 
-      <Footer />
       <Toaster 
         position="top-right" 
         expand={false} 
