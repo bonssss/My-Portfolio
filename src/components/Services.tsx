@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
-import { SERVICES } from "@/constants/data";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "../lib/supabase";
+import * as Icons from "lucide-react";
 import { ArrowUpRight } from "lucide-react";
 
 export function Services() {
+  const { data: SERVICES, isLoading } = useQuery({
+    queryKey: ['services'],
+    queryFn: async () => {
+      const { data, error } = await supabase.from('services').select('*').order('created_at', { ascending: false });
+      if (error) throw error;
+      return data;
+    }
+  });
+
   return (
     <section id="services" className="py-20 md:py-32 grid-bg">
       <div className="max-w-7xl mx-auto px-6">
@@ -19,7 +30,11 @@ export function Services() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-px bg-border">
-          {SERVICES.map((service, idx) => (
+          {isLoading ? (
+            <div className="p-12 text-center text-muted-foreground col-span-2">Loading services...</div>
+          ) : SERVICES?.map((service, idx) => {
+            const Icon = (Icons as any)[service.icon] || Icons.Settings;
+            return (
             <motion.div
               key={service.title}
               initial={{ opacity: 0 }}
@@ -34,7 +49,7 @@ export function Services() {
 
               <div className="relative z-10 space-y-8">
                 <div className="p-4 bg-muted w-fit rounded-none border border-border group-hover:bg-black/20 group-hover:border-black/20 transition-all">
-                  <service.icon className="h-8 w-8 text-primary group-hover:text-black" />
+                  <Icon className="h-8 w-8 text-primary group-hover:text-black" />
                 </div>
                 <h3 className="text-2xl md:text-4xl font-black tracking-tighter uppercase group-hover:text-black transition-colors">
                   {service.title}
@@ -49,7 +64,7 @@ export function Services() {
                 </div>
               </div>
             </motion.div>
-          ))}
+          )})}
         </div>
       </div>
     </section>
