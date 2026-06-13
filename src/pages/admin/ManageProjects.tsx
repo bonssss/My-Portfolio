@@ -5,12 +5,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
+import { ImageUploader } from "@/components/ImageUploader";
 
 export function ManageProjects() {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  
+
   // Form State
   const [id, setId] = useState<number | null>(null);
   const [title, setTitle] = useState("");
@@ -62,7 +63,7 @@ export function ManageProjects() {
 
   const handleDelete = async (projectId: number) => {
     if (!confirm("Are you sure you want to delete this project?")) return;
-    
+
     const { error } = await supabase.from('projects').delete().eq('id', projectId);
     if (error) {
       toast.error(error.message);
@@ -75,7 +76,7 @@ export function ManageProjects() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const techArray = tech.split(",").map(t => t.trim()).filter(t => t !== "");
-    
+
     const payload = {
       title,
       description,
@@ -119,7 +120,7 @@ export function ManageProjects() {
               <X className="w-4 h-4" />
             </Button>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -131,7 +132,7 @@ export function ManageProjects() {
                 <Input id="category" value={category} onChange={e => setCategory(e.target.value)} required />
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="description">Description</Label>
               <Input id="description" value={description} onChange={e => setDescription(e.target.value)} required />
@@ -143,8 +144,11 @@ export function ManageProjects() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="image">Image URL</Label>
-              <Input id="image" value={image} onChange={e => setImage(e.target.value)} required />
+              <Label>Image</Label>
+              <ImageUploader onUpload={setImage} />
+              {image && (
+                <img src={image} alt="Preview" className="w-32 h-32 object-cover rounded-md mt-2" />
+              )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
